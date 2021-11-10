@@ -1,13 +1,11 @@
 package com.xgt.pfentregarv
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.xgt.pfentregarv.databinding.ItemReposBinding
 import com.xgt.pfentregarv.model.Base
-import kotlinx.android.synthetic.main.item_repos.view.*
 
 class RepoAdapter(val repos: MutableList<Base>, val repoListener: (Base)-> Unit) : RecyclerView.Adapter<RepoAdapter.ReposHolder>() {
 
@@ -22,10 +20,10 @@ class RepoAdapter(val repos: MutableList<Base>, val repoListener: (Base)-> Unit)
 
     override fun onBindViewHolder(holder: ReposHolder, position: Int) {
         val repoPosition = repos[position]
-        binding.tvNameRepo.text = repoPosition.name
-        binding.tvDescription.text = repoPosition.description
+        binding.tvNameRepo.text = repoPosition.repoName
+        binding.tvDescription.text = repoPosition.repoDescription
         Picasso.get()
-            .load(repoPosition.owner.avatar_url)
+            .load(repoPosition.owner.avatarImg_url)
             .into(binding.ivRepo)
         binding.root.setOnClickListener{
             repoListener(repoPosition)

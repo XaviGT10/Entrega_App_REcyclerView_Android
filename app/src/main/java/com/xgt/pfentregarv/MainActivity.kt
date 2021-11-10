@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
         binding.rvRepos.layoutManager= LinearLayoutManager(this)
         binding.rvRepos.adapter= RepoAdapter(app.repo){
             val detailActivity = Intent(this, DetailActivity::class.java)
+            detailActivity.putExtra("name", it.repoName)
+            detailActivity.putExtra("description", it.repoDescription)
+            detailActivity.putExtra("language", it.language)
+            detailActivity.putExtra("tags", it.tags_url)
+            detailActivity.putExtra("img", it.owner.avatarImg_url)
             startActivity(detailActivity)
         }
     }
